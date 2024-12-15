@@ -5,4 +5,4 @@ project( AoC )
 set( CMAKE_EXPORT_COMPILE_COMMANDS ON )
 
 add_executable( day14 day14/main.cpp )
-target_compile_features( day14 PRIVATE cxx_std_20 )
+add_executable( day15 day15/main.cpp )
