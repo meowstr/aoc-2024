@@ -156,6 +156,46 @@ static void part2()
     printf( "solution: %d,%d\n", node.x, node.y );
 }
 
+static void setup_walls( int j )
+{
+    for ( int i = 0; i < grid_w * grid_h; i++ ) {
+        wall_grid[ i ] = 0;
+    }
+
+    for ( int i = 0; i <= j; i++ ) {
+        int node = wall_list[ i ];
+        wall_grid[ node ] = 1;
+    }
+}
+
+static void part2_alt()
+{
+    process_input();
+
+    int left = 0;
+    int right = wall_count - 1;
+
+    while ( right - left > 1 ) {
+        int mid = ( right + left ) / 2;
+        setup_walls( mid );
+
+        if ( pathfind() == -1 ) {
+            // go to left
+            right = mid;
+        } else {
+            // go to right
+            left = mid;
+        }
+
+        printf( "it: %d %d %d\n", left, mid, right );
+    }
+
+    int last_wall = wall_list[ right ];
+    node_t node = node_grid[ last_wall ];
+
+    printf( "solution: %d,%d\n", node.x, node.y );
+}
+
 int main()
 {
     node_grid = new node_t[ grid_w * grid_h ];
@@ -166,5 +206,5 @@ int main()
     closed_list = new int[ grid_w * grid_h ];
 
     part1();
-    part2();
+    part2_alt();
 }
