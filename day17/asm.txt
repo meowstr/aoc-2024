@@ -1,0 +1,37 @@
+Register A: 51571418
+Register B: 0
+Register C: 0
+
+Program: 2,4,1,1,7,5,0,3,1,4,4,5,5,5,3,0
+
+b = a MOD 8
+b = b XOR 1
+c = a >> b
+a = a >> 3
+b = b XOR 4
+b = b XOR c
+out b % 8
+if a > 0 repeat
+
+// grab 3 bits into b
+// flip last bit of b
+// shift a by b into c
+// flip first bit of b
+
+// xor b with c into b
+
+
+
+
+// reverse:
+
+// given x
+
+// xor with c
+
+// compute c = a >> (a % 8 ^ 1)
+
+// x = flip first bit of x
+
+
+// x = flip last bit of x
